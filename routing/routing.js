@@ -6,7 +6,7 @@ const {homeRouting} = require('./home');
 // 🏗 Stwórz tutaj funkcję 'requestRouting', która będzie obsługiwać zapytania HTTP.
 function requestRouting(request, response){
     const {url, method} = request;
-    console.log('INFO (${new Date().toUTCString()}): ${method} - ${url})');
+    console.log(`INFO (${new Date().toUTCString()}): ${method} - ${url})`);
 
     if (url === '/'){
         return homeRouting(method, response);
