@@ -59,7 +59,8 @@ function addNewProduct(request, response){
             const [key, value] = entry.split('=');
             return `${key}: ${decodeURIComponent(value)}`;
         });
-        
+
+        fs.writeFile('product.txt', `Title: ${formData[0]}, Description: ${formData[1]}`, (err) => {})
     })
 
     response.setHeader('Content-Type', 'text/html');
