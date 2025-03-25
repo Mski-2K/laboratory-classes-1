@@ -1,6 +1,7 @@
 // 📦 Zaimportuj moduł odpowiedzialne za routing poszczególnych części aplikacji.
 // 📦 Zaimportuj obiekt STATUS_CODE.
 const {STATUS_CODE} = require('../constants/statusCode');
+const {homeRouting} = require('./home');
 
 // 🏗 Stwórz tutaj funkcję 'requestRouting', która będzie obsługiwać zapytania HTTP.
 function requestRouting(request, response){
@@ -44,3 +45,6 @@ function requestRouting(request, response){
 //  };
 
 // 🔧 Wyeksportuj funkcję 'requestRouting', aby inne moduł mogły jej używać.
+module.exports = {
+    requestRouting: requestRouting,
+};

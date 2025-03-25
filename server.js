@@ -3,11 +3,12 @@
 // 📦 Zaimportuj funkcję 'requestRouting' z modułu 'routing/routing.js'.
 const http = require('http');
 const config = require('./config');
+const {requestRouting} = require('./routing/routing');
 
 // 🏗 Tutaj, stwórz funkcję 'requestListener, która przekazuje 'request' i 'response' do 'requestRouting'.
 
 function requestListener(request, response) {
-
+    requestRouting(request, response);
 }
 
 // 🏗 Tutaj, stwóz serwer Node.js. Pamiętaj przypisać go do stałej i przekazać mu 'requestListener'.
