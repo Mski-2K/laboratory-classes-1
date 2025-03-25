@@ -32,7 +32,8 @@ function renderAddProductPage(response){
     response.write('<input type="text" id="title" name="title"><br>');
     response.write('<label for="desc">Description: </label><br>');
     response.write('<input type="text" id="desc" name="desc"><br>');
-    response.write('<input type="submit" value="submit"><br></form>');
+    response.write('<input type="submit" value="submit"><br></form></body></html>');
+    response.end()
 }
 // 🏗 Stwórz funkcję 'renderAddProductPage', która wyrenderuje stronę dodawania produktu.
 
@@ -44,7 +45,27 @@ function renderNewProductPage(request, response){
 
 
 function addNewProduct(request, response){
-    console.log(request);
+    const body = [];
+
+    request.on('data', (chunk) => {
+        console.log('Recived chunk', chunk);
+        body.push(chunk);
+    })
+    request.on('end', () => {
+        const parsedBody = Buffer.concat(body).toString();
+        console.log('Full form content', parsedBody);
+
+        const formData = parsedBody.split('&').map(entry => {
+            const [key, value] = entry.split('=');
+            return `${key}: ${decodeURIComponent(value)}`;
+        });
+        
+    })
+
+    response.setHeader('Content-Type', 'text/html');
+    response.write('<html><head><title>Shop - Product added</title></head>');
+    response.write('<body><h1>Product added</h1></body></html>');
+    response.end()
 }
 // 🏗 Stwóz funkcję 'addNewProduct', która obsłuży dodawanie nowego produktu, zapisywanie go do pliku 'product.txt' oraz przeniesie użytkownika na stronę '/product/new'.
 // Podpowiedź: fileSystem.writeFile(...);
