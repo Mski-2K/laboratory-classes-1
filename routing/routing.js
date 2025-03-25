@@ -2,6 +2,7 @@
 // 📦 Zaimportuj obiekt STATUS_CODE.
 const {STATUS_CODE} = require('../constants/statusCode');
 const {homeRouting} = require('./home');
+const {productRouting} = require('./product');
 
 // 🏗 Stwórz tutaj funkcję 'requestRouting', która będzie obsługiwać zapytania HTTP.
 function requestRouting(request, response){
